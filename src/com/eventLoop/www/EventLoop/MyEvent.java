@@ -17,7 +17,7 @@ public class MyEvent{
         t.start();
     }
 
-    public void on(String name, Command c) {
+    public void on(String name, EventFunctor c) {
         EventObject event = new EventObject(name, c);
         eventList.add(event);
     }

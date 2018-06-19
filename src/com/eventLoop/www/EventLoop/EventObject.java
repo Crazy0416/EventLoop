@@ -2,11 +2,11 @@ package com.eventLoop.www.EventLoop;
 
 public class EventObject {
     private String eventName;
-    private Command command;
+    private EventFunctor command;
 
-    EventObject(String eventName, Command command) {
+    EventObject(String eventName, EventFunctor eventFunctor) {
         this.eventName = eventName;
-        this.command = command;
+        this.command = eventFunctor;
     }
 
     public void eventExcute() {

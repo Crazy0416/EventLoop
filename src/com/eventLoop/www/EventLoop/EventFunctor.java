@@ -1,5 +1,5 @@
 package com.eventLoop.www.EventLoop;
 
-public interface Command {
+public interface EventFunctor {
     public void execute();
 }
