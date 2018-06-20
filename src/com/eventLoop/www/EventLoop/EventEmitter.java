@@ -1,16 +1,19 @@
 package com.eventLoop.www.EventLoop;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
 
-public class MyEvent{
+public class EventEmitter {
     private EventLoop eventLoop;
     private List<EventObject> eventList;
+    private Thread mainThread;
 
-    public MyEvent() {
+    public EventEmitter() {
         eventLoop = new EventLoop();
         eventList = new LinkedList<EventObject>();
+        mainThread = Thread.currentThread();
 
         Thread t = new Thread(eventLoop);
         t.setDaemon(true);
@@ -22,10 +25,10 @@ public class MyEvent{
         eventList.add(event);
     }
 
-    public void emit(String name) {
+    public void emit(String name, Object... data) {
         eventList.forEach(event -> {
-            if(event.getEventName() == name) {
-                eventLoop.addEvent(event);
+            if(event.getEventName().equals(name)) {
+                eventLoop.addEvent(event, data);
             } else
                 return;
         });

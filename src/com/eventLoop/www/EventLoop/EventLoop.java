@@ -9,7 +9,8 @@ public class EventLoop implements Runnable{
         eventQueue = new LinkedBlockingQueue<EventObject>();
     }
 
-    public void addEvent(EventObject e) {
+    public void addEvent(EventObject e, Object... data) {
+        e.setParameter(data);
         eventQueue.add(e);
     }
 
